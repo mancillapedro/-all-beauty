@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+
+supliers = JSON.parse(File.read('db/json_seed/supliers.json'))
+
+supliers.each do |suplier|
+    Suplier.create(suplier)
+end

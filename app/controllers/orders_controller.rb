@@ -12,6 +12,12 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
-    redirect_to product_orders_path
+    redirect_to root_path
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:user, :total, :status)
   end
 end

@@ -2,6 +2,20 @@
 <p>Find me in app/views/lists/show.html.erb</p>
 
 <div class="container">
-
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= image_tag @product.url_img, class: "img-fluid rounded-start" %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= @product.name %></h5>
+          <p class="card-text"><small class="text-muted"><%= "Stock: #{@product.stock}" %></small></p>
+          <p class="card-text"><%= @product.description %></p>
+          <p class="card-text"><%= "price: $ #{@product.price}" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

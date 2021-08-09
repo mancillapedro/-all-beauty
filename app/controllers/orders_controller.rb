@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new(task_params)
+    order = Order.new(order_params)
     order.save
     redirect_to product_orders
   end

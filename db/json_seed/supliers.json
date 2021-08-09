@@ -1,0 +1,44 @@
+[
+  {
+    "name": "crystalnails",
+    "address": "República Árabe de Egipto 216, of 502",
+    "email": "contacto@crystalnails.cl",
+    "phone_number": "+56945097326"
+  },
+  {
+    "name": "organicnails",
+    "address": "Av. Irarrázaval 5370, Ñuñoa",
+    "email": "Acquaviva.ventas@gmail.com",
+    "phone_number": "+227928850"
+  },
+  {
+    "name": "sabercomprar",
+    "address": "Seminario 330, Providencia, Santiago. Metro Santa Isabel.Barrio Italia.",
+    "email": "informacion@sabercomprar.cl",
+    "phone_number": "+56977079213"
+  },
+  {
+    "name": "manitosdemailen",
+    "address": "Av. La Florida 8725, La Florida, Región Metropolitana",
+    "email": "manitosdemailen@gmail.com",
+    "phone_number": "933576347"
+  },
+  {
+    "name": "nailartstore",
+    "address": "Santiago, Chile",
+    "email": "contacto@nailartstore.cl",
+    "phone_number": "+56998758554"
+  },
+  {
+    "name": "www.nailschile",
+    "address": "Av Condell 1525, Ñuñoa, Santiago, Santiago Metropolitan, Chile",
+    "email": "ventas@nailschile.cl",
+    "phone_number": "+56223790038"
+  },
+  {
+    "name": "tienda manicure",
+    "address": "Ramón Cruz 76, Ñuñoa, Santiago, Chile",
+    "email": "info@manicure.cl",
+    "phone_number": "+56976992724"
+  }
+]

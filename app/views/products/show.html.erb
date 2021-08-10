@@ -14,6 +14,9 @@
           <p class="card-text"><%= @product.description %></p>
           <p class="card-text"><%= "price: $ #{@product.price}" %></p>
         </div>
+        <div>
+          <%= render "product_orders/form" %>
+        </div>
       </div>
     </div>
   </div>

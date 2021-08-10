@@ -1,22 +1,42 @@
+<br>
+<br>
 <div class="text-center">
-  <h2>TODOS TUS PRODUCTOS EN UN SOLO LUGAR</h2>
+  <h1>TODOS TUS PRODUCTOS EN UN SOLO LUGAR</h1>
 </div>
 <!-- así se comenta en html-->
 <br>
 <br>
 
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-3">
+  <div class="row row-cols-1 row-cols-md-4">
     <% @products.each do |product| %>
       <div class="col d-flex align-items-stretch">
-        <div class="card mb-3 px-3">
+        <%= link_to product_path(product), class:"text-decoration-none text-dark" do %>
+          <!--<div class="card mb-3 px-3">
+            <%= image_tag product.url_img, class: "card-img-top" %>
+            <div class="card-body product-card d-flex row">
+              <h6 class="card-title"><b><%= product.name %></b></h6>
+              !--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --            
+              <%= link_to "ver más", product_path(product), class:"align-self-end btn btn-primary" %>
+            </div>
+          </div> --> 
+       
+        <div class="card-trip mb-4">
           <%= image_tag product.url_img, class: "card-img-top" %>
-          <div class="card-body d-flex row">
-            <h5 class="card-title"><b><%= product.name %></b></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <%= link_to "ver mas", product_path(product), class:"align-self-end btn btn-primary" %>
+          <div class="card-trip-infos">
+            <div class="d-flex flex-column">
+              <div class="product-name">
+              <h2><%= product.name %></h2>
+            </div>
+            <div>
+              <%= link_to "ver más", product_path(product), class:"align-self-end btn btn-ghost" %>
+            </div>
+            </div>
+            
+            
           </div>
         </div>
+         <% end %>
       </div>
     <% end %>
   </div>

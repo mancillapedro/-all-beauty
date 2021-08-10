@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :products, :only => [:index, :show] do
-    resources :product_orders, :only => [:create]
+    resources :product_orders, :only => [:create, :edit, :update]
   end
   resources :orders, :only => [:index, :show, :create, :destroy] do
     resources :product_orders, :only => [:show]

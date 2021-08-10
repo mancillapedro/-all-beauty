@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :orders
   validates :name, presence: true
   validates :address, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, format: { with: /^(\+?56)?(\s?)(0?9)(\s?)[9876543]\d{7}$/, multiline: true}
 end

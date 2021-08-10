@@ -1,0 +1,8 @@
+<%= @order%>
+<%= @order.product_orders%>
+
+<% @order.product_orders.each do |product_order| %>
+  <p> <%=product_order  %> </p>
+  <p><%= product_order.product.name %></p>
+  <p><%= product_order.quantity %></p>
+<% end %>

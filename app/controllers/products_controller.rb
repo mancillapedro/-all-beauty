@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search]
   def index
     @products = Product.all
+    @categories = Category.all
+    @supliers = Suplier.all
   end
 
   def show

@@ -6,39 +6,20 @@
 <!-- así se comenta en html-->
 <br>
 <br>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
 
 <div class="container">
+
   <div class="row row-cols-1 row-cols-md-6">
-    <% @products.each do |product| %>
-      <div class="col d-flex align-items-stretch">
-        <%= link_to product_path(product), class:"text-decoration-none text-dark" do %>
-          <!--<div class="card mb-3 px-3">
-            <%= image_tag product.url_img, class: "card-img-top" %>
-            <div class="card-body product-card d-flex row">
-              <h6 class="card-title"><b><%= product.name %></b></h6>
-              !--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --            
-              <%= link_to "ver más", product_path(product), class:"align-self-end btn btn-primary" %>
-            </div>
-          </div> --> 
-       
-        <div class="card-trip mb-4">
-          <%= image_tag product.url_img, class: "card-img-top" %>
-          <div class="card-trip-infos">
-            <div class="d-flex flex-column">
-              <div class="product-name text-justify">
-              <h2><%= product.name %></h2>
-            </div>
-            <div>
-              <%= link_to "ver más", product_path(product), class:"align-self-end btn btn-ghost" %>
-            </div>
-            </div>
-            
-            
-          </div>
-        </div>
-         <% end %>
-      </div>
-    <% end %>
+    <%= render 'shared/cards', lista: @products %>
   </div>
-  <a href="#">esto es una prueba de como se comportan los enlaces en bootstrap</a>
 </div>

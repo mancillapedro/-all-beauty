@@ -3,14 +3,18 @@
     <h1>Proveedor digital <strong>para negocios de belleza</strong></h1>
     <p>Una buena descripción</p>
     <a class="btn btn-flat" href="#">Compra ahora</a>
-    <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+
+
+<form novalidate="novalidate" class="simple_form search" action="/search" accept-charset="UTF-8" method="get">
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
+    <input class="form-control string required" type="text" placeholder="buscar" id="search_form" name="q" />
+     <button type="submit" class="btn btn-flat">
       <i class="fas fa-search"></i> Search
     </button>
   </div>
 </form>
+
+
   </div>
 </div>
 

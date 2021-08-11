@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :orders, :only => [:index, :show, :create, :destroy] do
     resources :product_orders, :only => [:show]
   end
-  resources :product_orders, :only => [:destroy]
+  resources :product_orders, :only => [:destroy, :update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

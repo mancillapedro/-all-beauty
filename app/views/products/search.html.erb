@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Resultados para: <%=params[:q] %></h1>
+   <div class="row row-cols-1 row-cols-md-6">
+    <% @products.each do |product| %>
+      <div class="col d-flex align-items-stretch">
+        <%= link_to product_path(product), class:"text-decoration-none text-dark" do %>
+        <div class="card-trip mb-4">
+          <%= image_tag product.url_img, class: "card-img-top" %>
+          <div class="card-trip-infos">
+            <div class="d-flex flex-column">
+              <div class="product-name text-justify">
+              <h2><%= product.name %></h2>
+            </div>
+            <div>
+              <%= link_to "ver más", product_path(product), class:"align-self-end btn btn-ghost" %>
+            </div>
+            </div>
+          </div>
+        </div>
+         <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

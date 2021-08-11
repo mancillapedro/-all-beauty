@@ -25,7 +25,7 @@
           <td><%= product_order.product.price %></td>
           <td><%= product_order.quantity %></td>
           <td><%= sub_total %></th>
-          <td>#edit</th>
+          <td><%= render "product_orders/form", product_order: product_order %></th>
           <td><%= link_to '#delete', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></th>
         </tr>
       <% end %>

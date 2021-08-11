@@ -23,9 +23,9 @@ class ProductOrdersController < ApplicationController
 
   def update
     if @product_order.update(product_order_params)
-      redirect_to product_order_path(@product_order)
+      redirect_to order_path(@product_order.order)
     else
-      render :edit
+      render "orders/show"
     end
   end
 

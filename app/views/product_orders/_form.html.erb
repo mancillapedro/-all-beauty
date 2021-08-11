@@ -1,4 +1,6 @@
 <%= simple_form_for product_order do |f| %>
-  <%= f.input :quantity %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <div class="d-flex">
+    <%= f.input_field :quantity , class: "mx-3"%>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
 <% end %>

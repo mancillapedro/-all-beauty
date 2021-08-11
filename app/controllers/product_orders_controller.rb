@@ -1,30 +1,38 @@
 class ProductOrdersController < ApplicationController
-  before_action :set_product, only: [:create]
-  before_action :set_product_order, only: [:show, :destroy]
+  before_action :set_product_order, only: [:show, :destroy, :edit, :update]
 
   def show; end
 
   def create
     @product_order = ProductOrder.new(product_order_params)
-    @product_order.product = @product
+    @product_order.product = Product.find(params[:product_id])
     @product_order.order = current_user.orders.first
-    @product_order.save
-    redirect_to order_path(@product_order.order)
+    if @product_order.save
+      redirect_to order_path(@product_order.order)
+    else
+      render "products/show"
+    end
   end
 
   def destroy
     @product_order.destroy
-    redirect_to root_path
+    redirect_to order_path(@product_order.order)
+  end
+
+  def edit; end
+
+  def update
+    if @product_order.update(product_order_params)
+      redirect_to order_path(@product_order.order)
+    else
+      render "orders/show"
+    end
   end
 
   private
 
   def product_order_params
-    params.require(:product_order).permit(:order, :product, :quantity)
-  end
-
-  def set_product
-    @product = Product.find(params[:product_id])
+    params.require(:product_order).permit(:quantity)
   end
 
   def set_product_order

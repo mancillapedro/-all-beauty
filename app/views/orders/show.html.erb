@@ -20,13 +20,22 @@
         <% total += sub_total %>
         <tr>
           <th scope="row"> <%= i + 1 %> </th>
-          <td><%= image_tag product_order.product.url_img, class: "avatar" %></td>
-          <td><%= product_order.product.name %></td>
-          <td><%= product_order.product.price %></td>
+          <td>
+            <%= link_to product_order.product do %>
+              <%= image_tag product_order.product.url_img, class: "avatar" %>
+            <% end %>
+          </td>
+          <td><%= link_to product_order.product.name, product_order.product %></td>
+          <td><%= product_order.product.price%></td>
           <td><%= product_order.quantity %></td>
-          <td><%= sub_total %></th>
-          <td><%= render "product_orders/form", product_order: product_order %></th>
-          <td><%= link_to '#delete', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></th>
+          <td><%= sub_total %></td>
+          <td><%= link_to '#update', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %></td>
+          <td><%= link_to '#delete', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></td>
+          <!-- inicio modal -->
+          <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <%= render "product_orders/form", product_order: product_order %>
+          </div>
+          <!-- fin modal -->
         </tr>
       <% end %>
       <tr>
@@ -48,3 +57,9 @@
     </div>
   <% end %>
 </div>
+
+<!-- Button trigger modal -->
+
+
+
+

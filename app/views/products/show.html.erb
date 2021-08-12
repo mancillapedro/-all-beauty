@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Detalles del Producto</h1>
+  <h1>Detalles del Producto</h1>
 <!-- <p>Find me in app/views/lists/show.html.erb</p> -->
 </div>
 
@@ -15,13 +15,20 @@
           <p class="card-text"><small class="text-muted"><%= "Stock: #{@product.stock}" %></small></p>
           <p class="card-text"><%= @product.description %></p>
           <p class="card-text"><%= "price: $ #{@product.price}" %></p>
-        </div>
-        <div class="d-flex">
-          <p>Cantidad</p>
-          <%= render "product_orders/form", product_order: [(@product if @product_order.new_record?), @product_order].compact %>
+          <% if @product_order.new_record? %>
+            <%= link_to '#create', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProduct#{@product.id}" %>
+            <!-- inicio modal -->
+            <div class="modal fade" id="modalProduct<%= @product.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <%= render "product_orders/form", product_order: [@product, @product_order] %>
+            </div>
+            <!-- fin modal -->
+          <% else %>
+            <%= link_to '#show in order', order_path(@product_order.order) %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-
 </div>
+
+

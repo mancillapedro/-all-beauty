@@ -8,11 +8,16 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    # @product_order = ProductOrder.new
-    @product_order = ProductOrder.where(product: @product).first || ProductOrder.new
+    @product_order = set_product_order
   end
 
   def search
     @products = Product.where("lower(name) LIKE ?", "%#{params[:q].downcase}%")
+  end
+
+  private
+
+  def set_product_order
+    Order.where(status: false).first.product_orders.where(product: @product).first || ProductOrder.new
   end
 end

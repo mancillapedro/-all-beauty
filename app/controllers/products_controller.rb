@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   private
 
   def set_product_order
-    Order.where(status: false).first.product_orders.where(product: @product).first || ProductOrder.new
+    order = Order.where(status: false).first || Order.create(user: current_user, status: false)
+    order.product_orders.where(product: @product).first || ProductOrder.new
   end
 end

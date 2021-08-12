@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :destroy, :update]
 
   def index
-    @order_carro = Order.where(status: false).first
+    @order_carro = Order.where(status: false).first || Order.create(user: current_user, status: false)
     @orders_listas = Order.where(status: true)
   end
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'pages#home'
   get 'search', to:"products#search"
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
     resources :product_orders, :only => [:show]
   end
   resources :product_orders, :only => [:destroy, :update]
+  resources :categories, :only => [:show]
+  resources :supliers, :only => [:show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

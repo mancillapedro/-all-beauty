@@ -1,7 +1,9 @@
 class ProductOrdersController < ApplicationController
-  before_action :set_product_order, only: [:show, :destroy, :edit, :update]
+  before_action :set_product_order, only: [:destroy, :update]
 
-  def show; end
+  def index
+    @product_orders = Order.find(params[:order_id]).product_orders
+  end
 
   def create
     @product_order = ProductOrder.new(product_order_params)
@@ -19,13 +21,13 @@ class ProductOrdersController < ApplicationController
     redirect_to order_path(@product_order.order)
   end
 
-  def edit; end
-
   def update
-    if @product_order.update(product_order_params)
-      redirect_to order_path(@product_order.order)
-    else
-      render "orders/show"
+    unless @product_order.order.status
+      if @product_order.update(product_order_params)
+        redirect_to order_path(@product_order.order)
+      else
+        render "orders/show"
+      end
     end
   end
 

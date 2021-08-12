@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :products, :only => [:index, :show] do
     resources :product_orders, :only => [:create]
   end
-  resources :orders, :only => [:index, :show, :create, :destroy] do
-    resources :product_orders, :only => [:show]
+  resources :orders, :only => [:index, :show, :update] do
+    resources :product_orders, :only => [:index]
   end
   resources :product_orders, :only => [:destroy, :update]
   resources :categories, :only => [:show]

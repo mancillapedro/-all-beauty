@@ -1,1 +1,39 @@
-index.html.erb
+<% total = 0 %>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Img</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @product_orders.each_with_index do |product_order, i| %>
+        <% sub_total = product_order.quantity * product_order.product.price %>
+        <% total += sub_total %>
+        <tr>
+          <th scope="row"> <%= i + 1 %> </th>
+          <td><%= image_tag product_order.product.url_img, class: "avatar" %></td>
+          <td><%= product_order.product.name %></td>
+          <td><%= product_order.product.price %></td>
+          <td><%= product_order.quantity %></td>
+          <td><%= sub_total %></th>
+        </tr>
+      <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th scope="row"><%= total %></th>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

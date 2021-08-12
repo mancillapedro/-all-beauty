@@ -1,29 +1,22 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :destroy]
+  before_action :set_order, only: [:show, :destroy, :update]
 
   def index
-    @orders = Order.all
+    @order_carro = Order.where(status: false).first
+    @orders_listas = Order.where(status: true)
   end
 
   def show; end
 
-  def create
-    order = Order.new(order_params)
-    order.user = current_user
-    order.save
-    redirect_to order
-  end
-
-  def destroy
-    @order.destroy
-    redirect_to root_path
+  def update
+    unless @order.status
+      total = @order.product_orders.sum { |pro| pro.product.price * pro.quantity }
+      @order.update(status: true, total: total)
+    end
+    redirect_to orders_path
   end
 
   private
-
-  def order_params
-    params.require(:order).permit(:total, :status)
-  end
 
   def set_order
     @order = Order.find(params[:id])

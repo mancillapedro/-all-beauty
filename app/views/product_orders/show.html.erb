@@ -1,1 +1,50 @@
-show.html.erb
+<% total = 0 %>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Img</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.product_orders.each_with_index do |product_order, i| %>
+        <% sub_total = product_order.quantity * product_order.product.price %>
+        <% total += sub_total %>
+        <tr>
+          <th scope="row"> <%= i + 1 %> </th>
+          <td><%= image_tag product_order.product.url_img, class: "avatar" %></td>
+          <td><%= product_order.product.name %></td>
+          <td><%= product_order.product.price %></td>
+          <td><%= product_order.quantity %></td>
+          <td><%= sub_total %></th>
+          <td><%= render "product_orders/form", product_order: product_order %></th>
+          <td><%= link_to '#delete', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></th>
+        </tr>
+      <% end %>
+      <tr>
+        <td></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th scope="row"><%= total %></th>
+        <td></th>
+        <td></th>
+      </tr>
+    </tbody>
+  </table>
+  <%= simple_form_for @order do |f| %>
+    <div class="d-flex">
+      <%= total%>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <%= link_to '#confirmar', order_path(@order), method: :post, data: { confirm: "Are you sure?" } %>
+</div>

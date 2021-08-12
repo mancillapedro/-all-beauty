@@ -41,4 +41,10 @@
       </tr>
     </tbody>
   </table>
+  <%= simple_form_for @order do |f| %>
+    <div class="d-flex">
+      <%= total%>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>

@@ -22,10 +22,12 @@ class ProductOrdersController < ApplicationController
   def edit; end
 
   def update
-    if @product_order.update(product_order_params)
-      redirect_to order_path(@product_order.order)
-    else
-      render "orders/show"
+    unless @product_order.order.status
+      if @product_order.update(product_order_params)
+        redirect_to order_path(@product_order.order)
+      else
+        render "orders/show"
+      end
     end
   end
 

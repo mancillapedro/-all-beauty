@@ -1,6 +1,19 @@
-<%= simple_form_for product_order do |f| %>
-  <div class="d-flex">
-    <%= f.input_field :quantity , class: "mx-3"%>
-    <%= f.button :submit, class: "btn btn-primary" %>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">#quantity</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <%= simple_form_for product_order do |f| %>
+      <div class="modal-body">
+        <%= f.input_field :quantity , class: "mx-3"%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

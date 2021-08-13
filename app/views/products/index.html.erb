@@ -6,28 +6,32 @@
 <!-- así se comenta en html-->
 <br>
 <br>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+<div class="d-flex justify-content-center">
+<div class="dropdown">  
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categorías
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <% @categories.each do |cat| %>
       <%= link_to cat.name, category_path(cat), class:"dropdown-item" %>
-    <% end %>
+    <% end %>  
   </div>
 </div>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+<br>
+<br>
+<div class="dropdown">  
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Marcas
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
     <% @supliers.each do |sup| %>
       <%= link_to sup.name, suplier_path(sup), class:"dropdown-item" %>
     <% end %>
   </div>
+  </div>
 </div>
-
-
+<br>
+<br>
 <div class="container">
 
   <div class="row row-cols-1 row-cols-md-6">

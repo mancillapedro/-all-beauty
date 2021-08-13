@@ -33,13 +33,15 @@
           <td><%= product_order.product.price%></td>
           <td><%= product_order.quantity %></td>
           <td><%= sub_total %></td>
-          <td><%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %></td>
-          <td><%= link_to 'Borrar', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></td>
-          <!-- inicio modal -->
-          <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <%= render "product_orders/form", product_order: product_order %>
-          </div>
-          <!-- fin modal -->
+          <td>
+            <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
+            <!-- inicio modal -->
+            <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <%= render "product_orders/form", product_order: product_order %>
+            </div>
+            <!-- fin modal -->
+          </td>
+          <td><%= link_to 'Borarr', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></td>
         </tr>
       <% end %>
       <tr>

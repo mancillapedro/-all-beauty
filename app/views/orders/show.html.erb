@@ -1,14 +1,18 @@
-
+<div class="container">
+  <h1>Mi Pedido</h1>
+</div>
+<br>
+<br>
 <% total = 0 %>
 <div class="container">
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Código</th>
         <th scope="col">Img</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Quantity</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
         <th scope="col">Total</th>
         <th scope="col"></th>
         <th scope="col"></th>
@@ -29,8 +33,8 @@
           <td><%= product_order.product.price%></td>
           <td><%= product_order.quantity %></td>
           <td><%= sub_total %></td>
-          <td><%= link_to '#update', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %></td>
-          <td><%= link_to '#delete', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></td>
+          <td><%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %></td>
+          <td><%= link_to 'Borrar', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></td>
           <!-- inicio modal -->
           <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <%= render "product_orders/form", product_order: product_order %>
@@ -50,10 +54,11 @@
       </tr>
     </tbody>
   </table>
-  <%= simple_form_for @order do |f| %>
-    <div class="d-flex">
-      <%= total%>
-      <%= f.button :submit, class: "btn btn-primary" %>
+  <br>
+  <br>  
+    <%= simple_form_for @order do |f| %>
+    <div class="d-flex justify-content-center">     
+      <%= f.button :submit, "Comprar", class: "btn btn-outline-primary" %>
     </div>
   <% end %>
 </div>

@@ -16,7 +16,7 @@
           <p class="card-text"><%= @product.description %></p>
           <p class="card-text"><%= "price: $ #{@product.price}" %></p>
           <% if @product_order.new_record? %>
-            <%= link_to '#create', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProduct#{@product.id}" %>
+            <%= link_to 'Agregar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProduct#{@product.id}" %>
             <!-- inicio modal -->
             <div class="modal fade" id="modalProduct<%= @product.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <%= render "product_orders/form", product_order: [@product, @product_order] %>

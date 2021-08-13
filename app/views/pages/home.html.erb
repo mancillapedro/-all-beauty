@@ -1,43 +1,41 @@
-<div class="banner mt-1 pt-1">
+<div class="banner mt-1 p-1">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://static.wixstatic.com/media/fef5a5_d228e7d960534d54b54b7eee0a20b1ef~mv2.jpg/v1/fill/w_1349,h_489,al_c,q_85,usm_0.66_1.00_0.01/fef5a5_d228e7d960534d54b54b7eee0a20b1ef~mv2.webp);">
 
-<div class="container">
-  <div class="d-flex justify-content-center">
-    <%= image_tag("logoABbco.png", size: "250x250", alt: "logoAB")%>
-  </div>
-</div>   
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-<div class="container">
-  <div class="d-flex justify-content-center">
-    <h1 class="text-dark">¡Las mejores marcas de Manicura en un solo lugar!</h1>   
-  </div>
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <%= image_tag("logoABbco.png", size: "250x250", alt: "logoAB")%>
+      </div>
+    </div>   
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <h1 class="text-danger">¡Las mejores marcas de Manicura en un solo lugar!</h1>   
+        </div>
+      </div>
+        <br>    
+        <div class="d-flex justify-content-center">     
+          <a class="btn btn-danger" href="#">Ofertas</a>
+        </div>  
+  </div>   
 </div>
-<br>    
-<div class="d-flex justify-content-center">     
-  <a class="btn btn-danger" href="#">Ofertas</a>
-</div>  
-</div>   
-</div>
-<br>
-<div class="container">  
+<!-- OJO: este search lo dejé en modo "invisible", porque hay que sacarlo, pero cuando lo hago, me cambia el formato de todo el home> -->
+<div class="container mt-0">  
   <form novalidate="novalidate" class="simple_form search" action="/search" accept-charset="UTF-8" method="get">
     <div class="search-form-control form-group">
       <input class="form-control string required" type="text" placeholder="" id="search_form" name="q" />
-      <button type="submit" class="btn btn-outline-secondary">
-      <i class="fas fa-search"></i> Buscar
+      <button type="submit" class="btn btn-ligth">
+      <!-- invisibilicé la palabra "Buscar" x ahora: 
+      <i class="fas fa-search"></i> Buscar -->
       </button>
     </div>
-  </form>
-    <!--<a class="btn btn-danger" href="#">Ofertas</a>-->
+  </form>    
 </div>
-<br>
 <div class="container">
-  <div class="justify-content-center">
-
+  <div class="justify-content-center"> 
     <div class="card-deck">
       <div class="card">
         <img class="card-img-top" src="https://storagehexacommerce.blob.core.windows.net/manicure/Presentaciones/4/132315574605817788.png" alt="Card image cap">

@@ -8,7 +8,7 @@ class ProductOrdersController < ApplicationController
   def create
     @product_order = ProductOrder.new(product_order_params)
     @product_order.product = Product.find(params[:product_id])
-    @product_order.order = set_order
+    @product_order.order = current_user.carro
     if @product_order.save
       redirect_to order_path(@product_order.order)
     else
@@ -39,9 +39,5 @@ class ProductOrdersController < ApplicationController
 
   def set_product_order
     @product_order = ProductOrder.find(params[:id])
-  end
-
-  def set_order
-    current_user.orders.where(status: false).first || Order.create(user: current_user, status: false)
   end
 end

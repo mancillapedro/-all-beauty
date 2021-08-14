@@ -26,6 +26,7 @@ class ProductOrdersController < ApplicationController
     @product_order.quantity = product_order_params[:quantity]
     @order = @product_order.order
     @product_order.save_is_valid?
+    # logica de operacion si la condician anterio se cumple
     render "orders/show"
   end
 

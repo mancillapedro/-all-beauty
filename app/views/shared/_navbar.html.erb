@@ -6,23 +6,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarScroll">
-<!--     <form class="d-flex mr-auto" style="width: 50%; min-width: 300px;">
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-    </form> -->
+<!-- inicio search -->
+    <form novalidate="novalidate" class="simple_form search d-flex mr-5" action="/search" accept-charset="UTF-8" method="get" style="width: 100%;">
+      <div class="search-form-control form-group my-auto d-flex" style="width: 100%;">
+        <input class="form-control string required pl-3" type="text" placeholder="" id="search_form" name="q" />
+        <button type="submit" class="btn btn-outline-secondary">
+        <i class="fas fa-search"></i> Buscar
+        </button>
+      </div>
+    </form><!-- fin search -->
 
-      <form novalidate="novalidate" class="simple_form search d-flex mr-5" action="/search" accept-charset="UTF-8" method="get" style="width: 100%;">
-    <div class="search-form-control form-group my-auto d-flex" style="width: 100%;">
-      <input class="form-control string required pl-3" type="text" placeholder="" id="search_form" name="q" />
-      <button type="submit" class="btn btn-outline-secondary">
-      <i class="fas fa-search"></i> Buscar
-      </button>
-    </div>
-  </form>
-
-
-
-    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+    <ul class="navbar-nav mr-md-4 my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
       <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
       <li class="nav-item"><%= link_to "Productos", products_path, class: "nav-link" %></li>
 
@@ -48,24 +42,29 @@
 
     </ul>
 
-    <div class="d-flex mx-auto flex-row-reverse"><!-- inicio iconos -->
+    <div class="d-flex flex-row-reverse"><!-- inicio iconos -->
           <div class="nav-item dropdown"><!-- inicio dropdown user -->
             <a class="nav-link dropdown-toggle" href="#" id="navbarUser" role="button" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user tam-icon-nav"></i></a>
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUser">
-              <li><%= link_to "Home", "#", class: "dropdown-item" %></li>
-              <li><%= link_to "Productos", products_path, class: "dropdown-item" %></li>
+<% if user_signed_in? %>
               <li><%= link_to "Bienvenido, #{current_user.name}", "#", class: "dropdown-item disabled" %></li>
-              <li><%= link_to "Productos", products_path, class: "dropdown-item" %></li>
-              <li><%= link_to "Registro", new_user_registration_path, class: "dropdown-item" %></li>
-              <li><%= link_to "Login", new_user_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Mis ordenes", orders_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
-          </div><!-- fin dropdown user -->
+          </div>
 
           <div class="nav-item">
             <%= link_to order_path(Order.where(status: false).first), class: "nav-link" do %>
               <i class="fas fa-shopping-bag tam-icon-nav"></i>
             <% end %>
           </div>
+<% else %>
+              <li><%= link_to "Iniciar sesión", new_user_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Nuevo usuario", new_user_registration_path, class: "dropdown-item" %></li>
+            </ul>
+          </div><!-- fin dropdown user -->
+<% end %>
+
     </div><!-- fin iconos -->
 
   </div>

@@ -6,10 +6,11 @@ class ProductOrdersController < ApplicationController
   end
 
   def create
+    @product = Product.find(params[:product_id])
     @product_order = ProductOrder.new(product_order_params)
-    @product_order.product = Product.find(params[:product_id])
+    @product_order.product = @product
     @product_order.order = current_user.carro
-    if @product_order.save
+    if @product_order.save_is_valid?
       redirect_to order_path(@product_order.order)
     else
       render "products/show"
@@ -22,13 +23,10 @@ class ProductOrdersController < ApplicationController
   end
 
   def update
-    unless @product_order.order.status
-      if @product_order.update(product_order_params)
-        redirect_to order_path(@product_order.order)
-      else
-        render "orders/show"
-      end
-    end
+    @product_order.quantity = product_order_params[:quantity]
+    @order = @product_order.order
+    @product_order.save_is_valid?
+    render "orders/show"
   end
 
   private

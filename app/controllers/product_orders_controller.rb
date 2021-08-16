@@ -23,11 +23,16 @@ class ProductOrdersController < ApplicationController
   end
 
   def update
-    @product_order.quantity = product_order_params[:quantity]
-    @order = @product_order.order
-    @product_order.save_is_valid?
-    # logica de operacion si la condician anterio se cumple
-    render "orders/show"
+    unless @product_order.order.status
+      @product_order.quantity = product_order_params[:quantity]
+      @order = @product_order.order
+      if @product_order.save_is_valid?
+        # logica de operacion si la condician anterio se cumple
+        redirect_to order_path(@product_order.order)
+      else
+        render "orders/show"
+      end
+    end
   end
 
   private

@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_carro = current_user.carro
-    @orders_listas = Order.where(user_id: current_user.id)
+    @orders_listas = Order.where(status: true, user_id: current_user.id)
   end
 
   def show; end

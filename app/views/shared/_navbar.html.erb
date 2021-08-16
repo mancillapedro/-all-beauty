@@ -54,7 +54,7 @@
           </div>
 
           <div class="nav-item">
-            <%= link_to order_path(Order.where(status: false).first), class: "nav-link" do %>
+            <%= link_to order_path(current_user.carro), class: "nav-link" do %>
               <i class="fas fa-shopping-bag tam-icon-nav"></i>
             <% end %>
           </div>

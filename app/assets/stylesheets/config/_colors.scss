@@ -1,10 +1,14 @@
 // Define variables for your color scheme
 
-// For example:
-$gray: #302c2c;
-$gray: #302c2c;
-$gray: #302c2c;
+// For example
+$gray1: #1a1818;
+$gray2: #462b2b;
+$gray3: #c2bbbb;
 $orange: #E67E22;
 $red: #f80606;
-$gray: #302c2c;
+$gray: #383636;
 $light-gray: #f4f4f4;
+
+.fa-shopping-bag {
+  color: $red;
+}

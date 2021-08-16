@@ -37,7 +37,7 @@
             <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
             <!-- inicio modal -->
             <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <%= render "product_orders/form", product_order: product_order %>
+              <%= render "product_orders/form", product_order: [product_order.order, product_order] %>
             </div>
             <!-- fin modal -->
           </td>
@@ -51,17 +51,16 @@
         <td></td>
         <td></td>
         <th scope="row"><%= total %></th>
-        <td></th>
-        <td></th>
+        <td></td>
+        <td></td>
       </tr>
-      <!-- OJO: fin del conflicto de ramas en el github> -->
     </tbody>
   </table>
   <br>
   <br>  
     <%= simple_form_for @order do |f| %>
     <div class="d-flex justify-content-center">     
-      <%= f.button :submit, "Comprar", class: "btn btn-outline-danger" %>
+      <%= f.button :submit, "Comprar", class: "btn btn-outline-success" %>
     </div>
   <% end %>
 </div>

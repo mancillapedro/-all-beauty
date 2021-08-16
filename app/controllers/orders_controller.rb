@@ -10,7 +10,12 @@ class OrdersController < ApplicationController
 
   def update
     unless @order.status
-      total = @order.product_orders.sum { |pro| pro.product.price * pro.quantity }
+      total = 0
+      @order.product_orders.each do |p_o|
+        total = p_o.product.price * p_o.quantity
+        stock = p_o.product.stock - p_o.quantity
+        p_o.product.update(stock: stock)
+      end
       @order.update(status: true, total: total)
     end
     redirect_to orders_path

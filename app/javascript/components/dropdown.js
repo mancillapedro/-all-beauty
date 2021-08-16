@@ -1,4 +1,0 @@
-const hola = () => {
-
-}
-export { hola }

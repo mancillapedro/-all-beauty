@@ -37,7 +37,7 @@
             <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
             <!-- inicio modal -->
             <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <%= render "product_orders/form", product_order: product_order %>
+              <%= render "product_orders/form", product_order: [product_order.order, product_order] %>
             </div>
             <!-- fin modal -->
           </td>

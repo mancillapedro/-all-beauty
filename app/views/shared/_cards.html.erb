@@ -1,15 +1,10 @@
 <% lista.each do |product| %>
-  <div class="col d-flex align-items-stretch">
-    <%= link_to product_path(product), class:"text-decoration-none text-dark" do %>
-      <div class="card-trip mb-4">
+  <div class="col mb-4 rounded">
+    <%= link_to product_path(product), class:"text-decoration-none bg-text-card rounded" do %>
+      <div class="shadow card h-100 rounded">
         <%= image_tag product.url_img, class: "card-img-top" %>
-        <div class="card-trip-infos">
-          <div class="d-flex flex-column">
-            <div class="product-name text-justify">
-              <h2><%= product.name %></h2>
-            </div>
-            <%= link_to "ver más", product_path(product), class:"btn btn-ghost" %>
-          </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
         </div>
       </div>
     <% end %>

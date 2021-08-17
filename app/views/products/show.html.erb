@@ -1,32 +1,43 @@
-<br>
-<br>
 <div class="container">
-  <h1>DETALLES DEL PRODUCTO</h1>
-<!-- <p>Find me in app/views/lists/show.html.erb</p> -->
-</div>
-
-<div class="container">
+  <h1 class="text-center my-5">DETALLES DEL PRODUCTO</h1>
   <div class="card mb-3">
     <div class="row g-0">
-      <div class="col-md-4">
+      <div class="col-md-5">
         <%= image_tag @product.url_img, class: "img-fluid rounded-start" %>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><%= @product.name %></h5>
-          <p class="card-text"><small class="text-muted"><%= "Stock: #{@product.stock}" %></small></p>
-          <p class="card-text"><%= @product.description %></p>
-          <p class="card-text"><%= "price: $ #{@product.price}" %></p>
-          <% if @product_order.new_record? %>
-            <%= link_to 'Agregar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProduct#{@product.id}" %>
-            <!-- inicio modal -->
-            <div class="modal fade" id="modalProduct<%= @product.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <%= render "product_orders/form", product_order: [@product, @product_order] %>
-            </div>
-            <!-- fin modal -->
-          <% else %>
-            <%= link_to 'Agregar', order_path(@product_order.order) %>
+      <div class="col-md-7">
+        <div class="card-body pr-5">
+          <%= link_to category_path(@product.category) do %>
+          <p class="card-text mb-3">
+            <small class="text-muted"><%= "Categoria: #{@product.category.name}" %></small>
+          </p>
           <% end %>
+
+          <h2 class="card-title text-center mb-5"><%= @product.name %></h2>
+
+          <div class="row justify-content-end mr-2">
+            <div class="col-12">
+              <h3 class="card-text mb-2 text-right"><%= "$ #{@product.price}" %></h3>
+            </div>
+            <% if @product_order.new_record? %>
+              <%= link_to 'Agregar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProduct#{@product.id}", class:"btn btn-primary mr-2"  %>
+              <!-- inicio modal -->
+              <div class="modal fade" id="modalProduct<%= @product.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <%= render "product_orders/form", product_order: [@product, @product_order] %>
+              </div>
+              <!-- fin modal -->
+            <% else %>
+              <%= link_to 'Ver en carro', order_path(@product_order.order), class:"btn btn-primary mr-2" %>
+            <% end %>
+          </div>
+
+            <p class="card-text text-right mt-3">
+              <small class="text-muted"><%= "Stock disponible: #{@product.stock}" %></small>
+            </p>
+
+
+          <p class="card-text mt-3"><%= @product.description %></p>
+
         </div>
       </div>
     </div>

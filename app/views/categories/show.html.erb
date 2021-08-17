@@ -1,7 +1,7 @@
 <br>
 <br>
 <div class="container">
-  <h1 class="my-5 text-center"><%= @category.name %></h1>
+  <h1 class="my-5 text-center"><%= @category.name.upcase %></h1>
   <div class="row row-cols-1 row-cols-md-6">
     <%= render 'shared/cards', lista: @category.products %>
   </div>

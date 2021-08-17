@@ -34,8 +34,8 @@
       <li class="nav-item dropdown"><!-- inicio dropdown marcas -->
         <a class="nav-link dropdown-toggle" href="#" id="navbarSupliers" role="button" data-toggle="dropdown" aria-expanded="false">Marcas</a>
         <ul class="dropdown-menu" aria-labelledby="navbarSupliers">
-          <% Suplier.all.each do |cat| %>
-            <li><%= link_to cat.name, category_path(cat), class:"dropdown-item" %></li>
+          <% Suplier.all.each do |sup| %>
+            <li><%= link_to sup.name, suplier_path(sup), class:"dropdown-item" %></li>
           <% end %>
         </ul>
       </li><!-- fin dropdown marcas -->

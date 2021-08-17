@@ -3,20 +3,17 @@ class OrdersController < ApplicationController
 
   def index
     @order_carro = current_user.carro
-    @orders_listas = Order.where(status: true, user_id: current_user.id)
+    @orders_listas = Order.where(status: true, user: current_user)
   end
 
   def show; end
 
   def update
     unless @order.status
-      total = 0
-      @order.product_orders.each do |p_o|
-        total = p_o.product.price * p_o.quantity
-        stock = p_o.product.stock - p_o.quantity
-        p_o.product.update(stock: stock)
+      total = @order.product_orders.sum { |p_o| p_o.product.price * p_o.quantity }
+      if @order.update(status: true, total: total)
+        @order.product_orders.each { |p_o| p_o.product.update(stock: (p_o.product.stock - p_o.quantity)) }
       end
-      @order.update(status: true, total: total)
     end
     redirect_to orders_path
   end

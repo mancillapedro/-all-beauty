@@ -6,13 +6,23 @@
       </div>
       <div class="col-md-7">
         <div class="card-body pr-5">
-          <%= link_to category_path(@product.category) do %>
-          <p class="card-text mb-3">
-            <small class="text-muted"><%= "Categoria: #{@product.category.name}" %></small>
-          </p>
-          <% end %>
 
-          <h2 class="card-title text-center mb-5"><%= @product.name %></h2>
+          <div class="d-flex justify-content-between">
+            <%= link_to category_path(@product.category) do %>
+            <p class="card-text mb-2">
+              <small class="text-muted"><%= "Categoria: #{@product.category.name}" %></small>
+            </p>
+            <% end %>
+
+
+            <%= link_to suplier_path(@product.suplier) do %>
+            <p class="card-text text-right">
+              <small class="text-muted"><%= @product.suplier.name %></small>
+            </p>
+            <% end %>
+          </div>
+
+          <h2 class="card-title text-center mb-4"><%= @product.name %></h2>
 
           <div class="row justify-content-end mr-2">
             <div class="col-12">

@@ -1,0 +1,39 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Confirmación de compra</h5>
+    </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <%= simple_form_for @order do |f| %>
+          <div class="modal-body">
+            <p>Su pedido se ha procesado correctamente.  </p>
+            <p>Gracias por su compra</p>
+
+        </div>
+         <div class="modal-footer">
+          <div class="row align-content-end">
+          <%= f.button :submit, "Cerrar", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

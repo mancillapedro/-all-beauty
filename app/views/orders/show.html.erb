@@ -1,5 +1,7 @@
+<br>
+<br>
 <div class="container">
-  <h1>Mi Pedido</h1>
+  <h1>MI PEDIDO</h1>
 </div>
 <br>
 <br>
@@ -41,7 +43,7 @@
             </div>
             <!-- fin modal -->
           </td>
-          <td><%= link_to 'Borar', product_order_path(product_order), method: :delete, data: { confirm: "Are you sure?" } %></td>
+          <td><%= link_to 'Borrar', product_order_path(product_order), method: :delete, data: { confirm: "¿Estás seguro?" } %></td>
         </tr>
       <% end %>
       <tr>
@@ -61,7 +63,7 @@
   <br>  
     <%= simple_form_for @order do |f| %>
     <div class="d-flex justify-content-center">     
-      <%= f.button :submit, "Comprar", class: "btn btn-outline-primary" %>
+      <%= f.button :submit, "Comprar", class: "btn btn-outline-success" %>
     </div>
   <% end %>
 </div>

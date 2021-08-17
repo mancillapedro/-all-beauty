@@ -57,9 +57,8 @@
   </table>
   <br>
   <br>  
-    <%= simple_form_for @order do |f| %>
-    <div class="d-flex justify-content-center">     
-      <%= f.button :submit, "Comprar", class: "btn btn-outline-success" %>
-    </div>
-  <% end %>
+      <%= link_to 'Comprar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modal" %>
+      <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <%= render "form" %>
+      </div>
 </div>

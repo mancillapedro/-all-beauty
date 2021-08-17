@@ -1,0 +1,28 @@
+.banner {
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+
+  h2 {
+    color: $primary;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 20px;
+    color: $primary;
+    opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  @media(max-width: 576px) {
+    .logo{
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+}
+

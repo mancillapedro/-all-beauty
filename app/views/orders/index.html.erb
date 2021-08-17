@@ -33,7 +33,6 @@
     <h3>Mi compra actual</h3>
     <thead>
       <tr>
-        <th scope="col">Código</th>
         <th scope="col">Pedido Nro</th>
         <th scope="col">Total de la compra</th>
         <th scope="col">Estado de la compra</th>
@@ -42,7 +41,6 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row"> <%= 1 %> </th>
         <td><%= @order_carro.id %></td>
         <td><%= @order_carro.total %></td>
         <td><%= @order_carro.status %></td>
@@ -57,7 +55,6 @@
     <h3>Mis anteriores compras</h3>
     <thead>
       <tr>
-        <th scope="col">Código</th>
         <th scope="col">Pedido Nro</th>
         <th scope="col">Total de la compra</th>
         <th scope="col">Estado de la compra</th>
@@ -65,9 +62,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @orders_listas.where(status: true).each_with_index do |order, i| %>
+      <% @orders_listas.where(status: true).each_with_index do |order| %>
         <tr>
-          <th scope="row"> <%= i + 1 %> </th>
           <td><%= order.id %></td>
           <td><%= order.total %></td>
           <td><%= order.status %></td>

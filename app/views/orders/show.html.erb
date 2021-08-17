@@ -10,7 +10,6 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Código</th>
         <th scope="col">Img</th>
         <th scope="col">Nombre</th>
         <th scope="col">Precio</th>
@@ -21,11 +20,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @order.product_orders.each_with_index do |product_order, i| %>
+      <% @order.product_orders.each_with_index do |product_order| %>
         <% sub_total = product_order.quantity * product_order.product.price %>
         <% total += sub_total %>
         <tr>
-          <th scope="row"> <%= i + 1 %> </th>
           <td>
             <%= link_to product_order.product do %>
               <%= image_tag product_order.product.url_img, class: "avatar" %>
@@ -39,7 +37,7 @@
             <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
             <!-- inicio modal -->
             <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <%= render "product_orders/form", product_order: product_order %>
+              <%= render "product_orders/form", product_order: [product_order.order, product_order] %>
             </div>
             <!-- fin modal -->
           </td>
@@ -51,12 +49,10 @@
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
         <th scope="row"><%= total %></th>
-        <td></th>
-        <td></th>
+        <td></td>
+        <td></td>
       </tr>
-      <!-- OJO: fin del conflicto de ramas en el github> -->
     </tbody>
   </table>
   <br>
@@ -67,9 +63,3 @@
     </div>
   <% end %>
 </div>
-
-<!-- Button trigger modal -->
-
-
-
-

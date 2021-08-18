@@ -1,12 +1,6 @@
-<br>
-<br>
-<div class="container"> 
-  <h2>DETALLES DE TODAS MIS COMPRAS</h2>
-</div>
-<br>
-<br>
 <div class="container">
-  <table class="table table-hover">
+  <h2 class="my-5">DETALLES DE TODAS MIS COMPRAS</h2>
+  <table class="table table-hover mb-5">
     <h3>Mi compra actual</h3>
     <thead>
       <tr>
@@ -19,16 +13,14 @@
     <tbody>
       <tr>
         <td><%= @order_carro.id %></td>
-        <td><%= @order_carro.total %></td>
-        <td><%= @order_carro.status %></td>
+        <td><%= @order_carro.product_orders.sum { |p_o| p_o.quantity * p_o.product.price} %></td>
+        <td><%= "En carro" unless @order_carro.status %></td>
         <td><%= link_to "Ver más", order_path(@order_carro) %></td>
       </tr>
-
     </tbody>
   </table>
-  <br>
-  <br>
-    <table class="table table-hover">
+
+  <table class="table table-hover">
     <h3>Mis anteriores compras</h3>
     <thead>
       <tr>
@@ -43,7 +35,7 @@
         <tr>
           <td><%= order.id %></td>
           <td><%= order.total %></td>
-          <td><%= order.status %></td>
+          <td><%= "Lista" if order.status %></td>
           <td><%= link_to "Ver más", order_product_orders_path(order) %></td>
         </tr>
       <% end %>

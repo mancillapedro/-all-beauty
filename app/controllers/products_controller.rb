@@ -15,6 +15,15 @@ class ProductsController < ApplicationController
     @products = Product.where("lower(name) LIKE ?", "%#{params[:q].downcase}%")
   end
 
+  def autocomplete
+    products = Product.where("lower(name) LIKE ?", "%#{params[:q].downcase}%")
+    @products = products.first(5).map { |e| e.name }
+    puts "\n\n\nPRODUCTOS\n"
+    p @products
+    p @products.first.to_json
+    render json: @products
+  end
+
   private
 
   def set_product_order

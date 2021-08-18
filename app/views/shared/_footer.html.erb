@@ -3,24 +3,34 @@
 <div class= "container">
 
 <ul class="nav d-flex justify-content-between">  
-  <li class="nav-item">
-    <a class="nav-link" href="#">Inicio</a>
+  <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %>
   </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="#">Productos</a>
+  <li class="nav-item"><%= link_to "Productos", products_path, class: "nav-link" %>
   </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="#">Categorías</a>
-  </li>
+  <li class="nav-item dropdown"><!-- inicio dropdown categorias -->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarCategories" role="button" data-toggle="dropdown" aria-expanded="false">
+          Categorias
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarCategories">
+          <% Category.all.each do |cat| %>
+            <li><%= link_to cat.name, category_path(cat), class:"dropdown-item" %></li>
+          <% end %>
+        </ul>      
+  </li><!-- fin dropdown categorias -->
+
+  <li class="nav-item dropdown"><!-- inicio dropdown marcas -->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarSupliers" role="button" data-toggle="dropdown" aria-expanded="false">Marcas</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarSupliers">
+          <% Suplier.all.each do |sup| %>
+            <li><%= link_to sup.name, suplier_path(sup), class:"dropdown-item" %></li>
+          <% end %>
+        </ul>
+      </li><!-- fin dropdown marcas -->
 
   <li class="nav-item">
-    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Nuestras Marcas</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contacto</a>
+    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">contacto@allbeauty.com</a>
   </li>
   
   <li class="nav-item">

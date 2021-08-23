@@ -57,7 +57,11 @@
   </table>
   <div class="d-flex justify-content-around">
     <%= link_to "Ver ordenes", orders_path, class:"btn btn-primary" %>
+    <% if  total == 0 %>
+    <%= link_to 'Comprar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modal", class:"btn btn-success mr-2 disabled" %>
+    <% else %>
     <%= link_to 'Comprar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modal", class:"btn btn-success mr-2" %>
+    <% end %>
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
       <%= render "form" %>
     </div>

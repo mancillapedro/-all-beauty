@@ -28,8 +28,12 @@
             <div class="col-12">
               <h3 class="card-text mb-2 text-right"><%= "$ #{@product.price}" %></h3>
             </div>
+            <% if @product.stock <= 0%>
+            <p class="btn btn-primary mr-2 disabled">No hay stock disponible</p>
+            <% else %>
             <% if @product_order.new_record? %>
               <%= link_to 'Agregar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProduct#{@product.id}", class:"btn btn-primary mr-2"  %>
+
               <!-- inicio modal -->
               <div class="modal fade" id="modalProduct<%= @product.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <%= render "product_orders/form", product_order: [@product, @product_order] %>
@@ -37,6 +41,7 @@
               <!-- fin modal -->
             <% else %>
               <%= link_to 'Ver en carro', order_path(@product_order.order), class:"btn btn-primary mr-2" %>
+            <% end %>
             <% end %>
           </div>
 

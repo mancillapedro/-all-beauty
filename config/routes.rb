@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'search', to:"products#search"
   get 'autocomplete', to:"products#autocomplete"
+  get 'about', to:"pages#about"
 
   resources :products, :only => [:index, :show] do
     resources :product_orders, :only => [:create]

@@ -1,12 +1,18 @@
-<% lista.each do |product| %>
-  <div class="col mb-4 rounded">
-    <%= link_to product_path(product), class:"text-decoration-none bg-text-card rounded" do %>
-      <div class="shadow card h-100 rounded">
-        <%= image_tag product.url_img, class: "card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= product.name %></h5>
+<div class="row row-cols-1 row-cols-md-5">
+  <% lista.each do |product| %>
+    <div class="col mb-4">
+      <%= link_to product_path(product), class:"text-decoration-none rounded-lg" do %>
+        <div class="shadow card h-100 ">
+          <% if product.stock < 1 %>
+            <div class="card-header font-weight-bold no-stock text-center"> Sin Stock</div>
+          <% end %>
+          <%= image_tag product.url_img, class: "card-img-top" %>
+          <div class="card-body p-3">
+            <p class="card-subtitle text-muted mb-1"><%= product.suplier.name %></p>
+            <h5 class="card-title"><%= product.name %></h5>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

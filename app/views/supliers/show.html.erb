@@ -2,7 +2,5 @@
   <h1 class="my-3 text-center"><%= @suplier.name.upcase %></h1>
 </div>
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-6">
-    <%= render 'shared/cards', lista: @suplier.products %>
-  </div>
+  <%= render 'shared/cards', lista: @suplier.products %>
 </div>

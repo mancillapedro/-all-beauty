@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :search]
+  skip_before_action :authenticate_user!, only: [:index, :search, :autocomplete]
   def index
     @products = Product.all
     @categories = Category.all
@@ -16,12 +16,8 @@ class ProductsController < ApplicationController
   end
 
   def autocomplete
-    products = Product.where("lower(name) LIKE ?", "%#{params[:q].downcase}%")
-    @products = products.first(5).map { |e| e.name }
-    puts "\n\n\nPRODUCTOS\n"
-    p @products
-    p @products.first.to_json
-    render json: @products
+    @products = search.first(5).map { |product| { name: product.name, path: product_path(product) } }
+    render json: { date: Time.now, products: @products }
   end
 
   private

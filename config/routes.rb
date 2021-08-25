@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'search', to:"products#search"
+  get 'autocomplete', to:"products#autocomplete"
 
   resources :products, :only => [:index, :show] do
     resources :product_orders, :only => [:create]

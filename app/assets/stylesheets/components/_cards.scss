@@ -3,7 +3,7 @@
 }
 
 .card-opasity{
-  background: rgba(201, 11, 52, 0.2);
+  background: rgba(70, 1, 14, 0.9);
 }
 
 .product-card{
@@ -82,4 +82,8 @@
   font-weight: bold;
   opacity: 0.6;
   transition: opacity 50s ease;
+}
+
+.card-group{
+  margin-left: 10px;
 }

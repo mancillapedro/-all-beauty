@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_134004) do
+ActiveRecord::Schema.define(version: 2021_08_24_161220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2021_08_09_134004) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_supliers", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "suplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_supliers_on_order_id"
+    t.index ["suplier_id"], name: "index_order_supliers_on_suplier_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -61,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_08_09_134004) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "url_img"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +88,8 @@ ActiveRecord::Schema.define(version: 2021_08_09_134004) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "order_supliers", "orders"
+  add_foreign_key "order_supliers", "supliers"
   add_foreign_key "orders", "users"
   add_foreign_key "product_orders", "orders"
   add_foreign_key "product_orders", "products"

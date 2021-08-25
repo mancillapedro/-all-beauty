@@ -4,47 +4,34 @@
         <%= image_tag("logoABbco.png", alt: "logo All Beauty", class: "logo")%>
       </div>
       <div class="d-flex justify-content-center mb-3">
-        <h1 class="display-4 text-center">LAS MEJORES MARCAS EN UN CLICK</h1>
+        <h1 class="display-4 text-center">LAS MEJORES MARCAS EN UN LUGAR</h1>
       </div>
       <div class="d-flex justify-content-center">
-        <%= link_to "Revisa Aquí", products_path, class: "btn btn-info" %>
+        <%= link_to "Todo en 1 Click", products_path, class: "btn btn-info" %>
       </div>
     </div>
 </div>
 
-<div class="container mt-5">
-  <div class="justify-content-center"> 
-    <div class="card-deck">    
-      <div class="card shadow p-0 mb-5 rounded card-opasity">
-        <img class="card-img-top rounded" src="https://storagehexacommerce.blob.core.windows.net/manicure/Presentaciones/4/132315574605817788.png" alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title">ARTISTIC</h3>
-          <h6 class="card-text">Los gel Artistic Colour tienen un nuevo sistema de maquillaje de uñas que se aplica como un esmalte, dura como un gel, tiene acabado espejo (brillo extremo), secado inmediato y se elimina en minutos con acetona pura, sin necesidad de limar la superficie de la uña.</h6>
-        </div>        
-      </div>
-
-      <div class="card shadow p-0 mb-5 rounded card-opasity">
-        <img class="card-img-top rounded" src="https://www.crystalnails.cl/wp-content/uploads/2020/08/Tiger-Eye-2-e1596320096570.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title">CRYSTAL NAILS</h3>
-          <h6 class="card-text">Conoce la nueva línea Xtreme Fusion Gel de Crystal Nails, una de las mejores marcas de insumos profesionales para las uñas a nivel mundial. Está disponible en 32 países a lo largo de 4 continentes. Más de 300 medallas con 220 primeros lugares en Competiciones Mundiales son parte de la excelencia de las educadoras de Crystal Nails.</h6>
-        </div>        
-      </div>
-
-      <div class="card shadow p-0 mb-5 rounded card-opasity">
-        <img class="card-img-top rounded" src="https://dojiw2m9tvv09.cloudfront.net/34105/product/X_kitbasico3911.jpg?35" alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title">ORGANIC NAILS</h3>
-          <h6 class="card-text">Con más de 25 años de experiencia en la industria del cuidado y embellecimiento de manos y pies, Organic Nails es otro gran líder del mercado con un excelente soporte educativo, productos de calidad e innovación y el compromiso en todo lo que hacen. Recomendamos su Kit ProBasic, especialmente para Manicuristas que están iniciando su carrera.</h6>
-        </div>        
-      </div>
+<div class="container mt-5">   
+    <div class=" row justify-content-center p-0">  
+       <% @supliers.first(6).each do |sup| %>
+        <div class="card shadow p-0 mb-5 rounded col-lg-3 ml-3 mr-5 card-opasity">
+        <%= link_to suplier_path(sup) do%>
+          <%= image_tag sup.url_img, class:"card-img-top rounded", alt: "Card image cap" %>       
+            <div class="card-body">
+              <h3 class="card-title text-center mb-0"><%=sup.name%></h3>          
+            </div>        
+          </div> 
+        <%end%> 
+      <%end%> 
     </div>
   </div> 
 </div>
+
 <br>
 <br>
 <div class="text-center">
-  <h2>ADELANTO NUEVA COLECCIÓN 2022</h2>
+  <h3>ADELANTO NUEVA COLECCIÓN 2022 CRYSTAL NAILS</h3>
 </div>
 <div class="d-flex justify-content-center">
 <div id="carouselExampleControls" class="carousel slide w-50" data-ride="carousel">

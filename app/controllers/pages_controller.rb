@@ -4,4 +4,6 @@ class PagesController < ApplicationController
   def home
     @supliers=Suplier.all
   end
+
+  def about; end
 end

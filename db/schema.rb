@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_191852) do
+ActiveRecord::Schema.define(version: 2021_08_26_192239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(version: 2021_08_26_191852) do
     t.index ["suplier_id"], name: "index_products_on_suplier_id"
   end
 
+  create_table "suplier_user_supliers", force: :cascade do |t|
+    t.bigint "suplier_id", null: false
+    t.bigint "user_suplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["suplier_id"], name: "index_suplier_user_supliers_on_suplier_id"
+    t.index ["user_suplier_id"], name: "index_suplier_user_supliers_on_user_suplier_id"
+  end
+
   create_table "supliers", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -107,4 +116,6 @@ ActiveRecord::Schema.define(version: 2021_08_26_191852) do
   add_foreign_key "product_orders", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "supliers"
+  add_foreign_key "suplier_user_supliers", "supliers"
+  add_foreign_key "suplier_user_supliers", "user_supliers"
 end

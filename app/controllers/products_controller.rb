@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search, :autocomplete]
+
   def index
     @products = Product.all
     @categories = Category.all

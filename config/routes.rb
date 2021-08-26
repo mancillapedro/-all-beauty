@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'search', to:"products#search"
   get 'autocomplete', to:"products#autocomplete"
   get 'about', to:"pages#about"
+  get 'dashboard', to:"pages#dashboard"
 
   resources :products, :only => [:index, :show] do
     resources :product_orders, :only => [:create]

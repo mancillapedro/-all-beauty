@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :user_supliers
   devise_for :users
+  devise_for :user_supliers
   root to: 'pages#home'
   get 'search', to:"products#search"
   get 'autocomplete', to:"products#autocomplete"
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   resources :product_orders, :only => [:destroy]
   resources :categories, :only => [:show]
-  resources :supliers, :only => [:show]
+  resources :supliers, :only => [:show, :new, :create]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :user_supliers
   devise_for :users
   root to: 'pages#home'
   get 'search', to:"products#search"

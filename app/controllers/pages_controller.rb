@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :about, :dashboard]
   before_action :authenticate_user_suplier!, only: [:dashboard]
+
+  skip_before_action :authenticate_user!, only: [:home, :about, :dashboard]
 
   def home
     @supliers = Suplier.all

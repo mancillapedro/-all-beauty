@@ -1,0 +1,13 @@
+.logo{
+  width: 180px;
+  height: 180px;  
+  -webkit-box-reflect: above 0px linear-gradient(to bottom, rgba(17, 1, 17, 0), rgba(0,0,0,0.6));
+}
+
+.jumbotron{  
+  -webkit-box-reflect: above 0px linear-gradient(to bottom, rgba(17, 1, 17, 0), rgba(0,0,0,1));
+}
+
+h2 {
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+}

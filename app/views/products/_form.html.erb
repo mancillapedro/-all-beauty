@@ -1,0 +1,9 @@
+<%= simple_form_for @product do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :stock %>
+  <%= f.input :price %>
+  <%= f.input :url_img %>
+  <%= f.association :category %>
+  <%= f.button :submit %>
+<% end %>

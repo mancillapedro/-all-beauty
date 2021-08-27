@@ -1,10 +1,17 @@
 
-
 <%= current_user_suplier %>
 
 <%= current_user_suplier.email %>
-<p>Tu Suplier</p>
+<p></p>
 <%= current_user_suplier.suplier %>
+<%= current_user_suplier.suplier.name %>
 <p>xxxxx</p>
-
 <%= link_to "#new suplier", new_suplier_path %>
+
+
+<p>aki los productos</p>
+
+<% current_user_suplier.suplier.products.each do |product| %>
+  <%= product.name %>
+<% end  %>
+<%= link_to "#new product", new_product_path %>

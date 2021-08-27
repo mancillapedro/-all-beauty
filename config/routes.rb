@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'about', to:"pages#about"
   get 'dashboard', to:"pages#dashboard"
 
-  resources :products, :only => [:index, :show] do
+  resources :products, :only => [:index, :show, :new, :create] do
     resources :product_orders, :only => [:create]
   end
   resources :orders, :only => [:index, :show, :update] do

@@ -15,7 +15,7 @@ class SupliersController < ApplicationController
     @suplier = Suplier.new(suplier_params)
     if @suplier.save
       SuplierUserSuplier.create(suplier: @suplier, user_suplier: current_user_suplier)
-      redirect_to suplier_path(@suplier)
+      redirect_to dashboard_path
     else
       render :new
     end

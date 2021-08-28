@@ -1,17 +1,44 @@
+<div class="jumbotron banner2" style="background-image: radial-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.5)), url(<%= current_user_suplier.suplier.url_img %>);">
+  <div class="row justify-content-center">
+    <%= link_to "#new suplier", new_suplier_path, class:"btn btn-primary" %>
+  </div>
+  <h1 class="my-3 text-center"><%= current_user_suplier.suplier.name %></h1>
+</div>
 
-<%= current_user_suplier %>
-
-<%= current_user_suplier.email %>
-<p></p>
-<%= current_user_suplier.suplier %>
-<%= current_user_suplier.suplier.name %>
-<p>xxxxx</p>
-<%= link_to "#new suplier", new_suplier_path %>
-
-
-<p>aki los productos</p>
 
 <% current_user_suplier.suplier.products.each do |product| %>
-  <%= product.name %>
+  <div class="container mb-5">
+    <table class="table table-hover">
+      <h2>#Products</h2>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Img</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Stock</th>
+          <th scope="col">#Edit</th>
+          <th scope="col">#Destroy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= image_tag product.url_img, class: "avatar" %></td>
+          <td><%= product.name %></td>
+          <td><%= product.category.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.stock %></td>
+          <td><%= "#" %></td>
+          <td><%= "#" %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row justify-content-end m-1">
+      <%= link_to "#new product", new_product_path, class:"btn btn-primary" %>
+    </div>
+  </div>
 <% end  %>
-<%= link_to "#new product", new_product_path %>
+

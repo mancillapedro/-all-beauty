@@ -1,0 +1,2 @@
+class CopyProduct < ApplicationRecord
+end

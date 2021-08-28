@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user_suplier!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user_suplier!, only: [:new, :create, :edit, :update, :destroy]
 
-  skip_before_action :authenticate_user!, only: [:index, :search, :autocomplete, :new, :create, :edit, :update]
+  skip_before_action :authenticate_user!, except: [:show]
 
-  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -46,6 +46,14 @@ class ProductsController < ApplicationController
       redirect_to dashboard_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to dashboard_path
+    else
+      render 'pages/dashboard'
     end
   end
   ######

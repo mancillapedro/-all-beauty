@@ -24,6 +24,6 @@ class SupliersController < ApplicationController
   private
 
   def suplier_params
-    params.require(:suplier).permit(:name, :address, :phone_number, :email)
+    params.require(:suplier).permit(:name, :address, :phone_number, :email, :url_img)
   end
 end

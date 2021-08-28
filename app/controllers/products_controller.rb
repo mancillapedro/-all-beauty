@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user_suplier!, only: [:new, :create]
+  before_action :authenticate_user_suplier!, only: [:new, :create, :edit, :update]
 
-  skip_before_action :authenticate_user!, only: [:index, :search, :autocomplete, :new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :search, :autocomplete, :new, :create, :edit, :update]
+
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     @products = Product.all
@@ -10,8 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-    @product_order = set_product_order
+    @product_order = current_user.carro.product_orders.where(product: @product).first || ProductOrder.new
   end
 
   def search
@@ -37,15 +38,25 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+
+  def edit; end
+
+  def update
+    if @product.update(product_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
+  end
   ######
 
   private
 
-  def set_product_order
-    current_user.carro.product_orders.where(product: @product).first || ProductOrder.new
-  end
-
   def product_params
     params.require(:product).permit(:name, :description, :stock, :price, :category_id, :url_img)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end

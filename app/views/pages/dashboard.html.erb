@@ -52,8 +52,9 @@
 </div>
 
 <div class="container">
-
-
+  <% SuplierProductOrder.where(suplier: current_user_suplier.suplier).each do |spo| %>
+    <%= spo.status %>
+  <% end %>
 </div>
 
 

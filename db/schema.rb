@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_161220) do
+ActiveRecord::Schema.define(version: 2021_08_28_234825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "copy_products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.string "url_img"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -63,6 +72,28 @@ ActiveRecord::Schema.define(version: 2021_08_24_161220) do
     t.index ["suplier_id"], name: "index_products_on_suplier_id"
   end
 
+  create_table "suplier_product_orders", force: :cascade do |t|
+    t.bigint "suplier_id", null: false
+    t.bigint "product_order_id", null: false
+    t.bigint "copy_product_id", null: false
+    t.string "status"
+    t.integer "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["copy_product_id"], name: "index_suplier_product_orders_on_copy_product_id"
+    t.index ["product_order_id"], name: "index_suplier_product_orders_on_product_order_id"
+    t.index ["suplier_id"], name: "index_suplier_product_orders_on_suplier_id"
+  end
+
+  create_table "suplier_user_supliers", force: :cascade do |t|
+    t.bigint "suplier_id", null: false
+    t.bigint "user_suplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["suplier_id"], name: "index_suplier_user_supliers_on_suplier_id"
+    t.index ["user_suplier_id"], name: "index_suplier_user_supliers_on_user_suplier_id"
+  end
+
   create_table "supliers", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -71,6 +102,18 @@ ActiveRecord::Schema.define(version: 2021_08_24_161220) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "url_img"
+  end
+
+  create_table "user_supliers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_user_supliers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_user_supliers_on_reset_password_token", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,4 +138,9 @@ ActiveRecord::Schema.define(version: 2021_08_24_161220) do
   add_foreign_key "product_orders", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "supliers"
+  add_foreign_key "suplier_product_orders", "copy_products"
+  add_foreign_key "suplier_product_orders", "product_orders"
+  add_foreign_key "suplier_product_orders", "supliers"
+  add_foreign_key "suplier_user_supliers", "supliers"
+  add_foreign_key "suplier_user_supliers", "user_supliers"
 end

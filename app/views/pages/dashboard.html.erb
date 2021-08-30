@@ -1,0 +1,86 @@
+<div class="jumbotron banner2" style="background-image: radial-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.5)), url(<%= current_user_suplier.suplier.url_img %>);">
+  <% if current_user_suplier.suplier %>
+    <h1 class="my-3 text-center"><%= current_user_suplier.suplier.name %></h1>
+    <div class="row justify-content-end">
+      <%= link_to "#edit suplier", "#" %>
+    </div>
+  <% else %>
+    <div class="row justify-content-center">
+      <%= link_to "#new suplier", new_suplier_path, class:"btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container mb-5">
+  <table class="table table-hover">
+    <h2>#Products</h2>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Img</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+        <th scope="col">#Edit</th>
+        <th scope="col">#Destroy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user_suplier.suplier.products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= image_tag product.url_img, class: "avatar" %></td>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.category.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.stock %></td>
+          <td><%= link_to "#Edit", edit_product_path(product) %></td>
+          <td><%= link_to "#Delete", product_path(product), method: :delete, data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end  %>
+    </tbody>
+  </table>
+
+  <div class="row justify-content-end m-1">
+    <%= link_to "#new product", new_product_path, class:"btn btn-primary" %>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <table class="table table-hover">
+    <h2>#suplier_product_order</h2>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ID producto (original)</th>
+        <th scope="col">Img (copia)</th>
+        <th scope="col">Nombre (copia)</th>
+        <th scope="col">Valor Unidad (copia)</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Total</th>
+        <th scope="col">#status</th>
+        <th scope="col">#update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% SuplierProductOrder.where(suplier: current_user_suplier.suplier).each do |spo| %>
+        <tr>
+          <td><%= spo.product_order.id %></td>
+          <td><%= spo.product_order.product.id %></td>
+          <td><%= image_tag spo.product_order.product.url_img, class: "avatar" %></td>
+          <td><%= spo.copy_product.name %></td>
+          <td><%= spo.product_order.product.price %></td>
+          <td><%= spo.product_order.quantity %></td>
+          <td><%= spo.total %></td>
+          <td><%= spo.status %></td>
+          <td><%= link_to "#update", '#', method: :delete, data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end  %>
+    </tbody>
+  </table>
+
+
+

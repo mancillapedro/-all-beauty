@@ -42,9 +42,9 @@
 
     <div class="d-flex flex-row-reverse"><!-- inicio iconos -->
           <div class="nav-item dropdown"><!-- inicio dropdown user -->
-            <a class="nav-link dropdown-toggle" href="#" id="navbarUser" role="button" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user tam-icon-nav"></i></a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarUser" role="button" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user tam-icon-nav fa-xs"></i></a> 
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUser">
-<% if user_signed_in? %>
+            <% if user_signed_in? %>
               <li><%= link_to "Bienvenido, #{current_user.name}", "#", class: "dropdown-item disabled" %></li>
               <li><%= link_to "Mis ordenes", orders_path, class: "dropdown-item" %></li>
               <li><%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
@@ -56,12 +56,12 @@
               <i class="fas fa-shopping-bag tam-icon-nav"></i>
             <% end %>
           </div>
-<% else %>
+          <% else %>
               <li><%= link_to "Iniciar sesión", new_user_session_path, class: "dropdown-item" %></li>
               <li><%= link_to "Nuevo usuario", new_user_registration_path, class: "dropdown-item" %></li>
             </ul>
           </div><!-- fin dropdown user -->
-<% end %>
+          <% end %>
 
     </div><!-- fin iconos -->
 

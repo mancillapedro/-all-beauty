@@ -28,3 +28,11 @@
   }
 
 }
+
+.navbar {
+  background: rgba(251, 250, 252, 0.1);
+  &:hover {
+  background: rgba(251, 250, 252, 1);
+  }
+
+}

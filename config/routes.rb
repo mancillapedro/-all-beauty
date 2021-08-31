@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
   devise_for :user_supliers
   root to: 'pages#home'
@@ -11,12 +12,16 @@ Rails.application.routes.draw do
   resources :products, :only => [:index, :show, :new, :create, :update, :edit, :destroy] do
     resources :product_orders, :only => [:create]
   end
+
   resources :orders, :only => [:index, :show, :update] do
     resources :product_orders, :only => [:index, :update]
   end
+
   resources :product_orders, :only => [:destroy]
   resources :categories, :only => [:show]
   resources :supliers, :only => [:show, :new, :create, :edit, :update]
+
+  get 'suplier_user_supliers/index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

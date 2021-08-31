@@ -4,7 +4,7 @@
   <%= f.input :stock %>
   <%= f.input :price %>
   <%= f.input :url_img %>
-  <%= f.input :image, as: :file %>
+  <%= f.input :image, input_html: { accept: "image/*"} %>
   <%= f.association :category %>
   <%= f.button :submit %>
 <% end %>

@@ -1,4 +1,4 @@
-<div class="jumbotron banner2" style="background-image: radial-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.5)), url(<%= @suplier.url_img %>);">
+<div class="jumbotron banner2" style="background-image: radial-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.5)), url(<%= render inline: @suplier.valid_img_bg %>);">
   <h1 class="my-3 text-center"><%= @suplier.name.upcase %></h1>
 </div>
 <div class="container">

@@ -26,7 +26,7 @@
         <tr>
           <td>
             <%= link_to product_order.product do %>
-              <%= image_tag product_order.product.url_img, class: "avatar" %>
+              <%= render inline: product_order.product.valid_img(class: "avatar") %>
             <% end %>
           </td>
           <td><%= link_to product_order.product.name, product_order.product %></td>

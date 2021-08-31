@@ -2,7 +2,7 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-5">
-        <%= image_tag @product.url_img, class: "img-fluid rounded-start" %>
+        <%= render inline: @product.valid_img(class:"img-fluid rounded-start") %>
       </div>
       <div class="col-md-7">
         <div class="card-body pr-5">

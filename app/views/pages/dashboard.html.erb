@@ -1,9 +1,9 @@
 <% if current_user_suplier.suplier %>
-<div class="jumbotron banner2" style="background-image: radial-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.5)), url(<%= current_user_suplier.suplier.url_img %>);">
+<div class="jumbotron banner2" style="background-image: radial-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.5)), url(<%= render inline: current_user_suplier.suplier.valid_img_bg %>);">
 
     <h1 class="my-3 text-center"><%= current_user_suplier.suplier.name %></h1>
     <div class="row justify-content-end">
-      <%= link_to "#edit suplier", "#" %>
+      <%= link_to "#edit suplier", edit_suplier_path(current_user_suplier.suplier) %>
     </div>
 
 </div>
@@ -28,7 +28,7 @@
       <% current_user_suplier.suplier.products.each do |product| %>
         <tr>
           <td><%= product.id %></td>
-          <td><%= image_tag product.url_img, class: "avatar" %></td>
+          <td><%= render inline: product.valid_img(class: "avatar") %></td>
           <td><%= product.name %></td>
           <td><%= product.description %></td>
           <td><%= product.category.name %></td>
@@ -67,7 +67,7 @@
         <tr>
           <td><%= spo.product_order.id %></td>
           <td><%= spo.product_order.product.id %></td>
-          <td><%= image_tag spo.product_order.product.url_img, class: "avatar" %></td>
+          <td><%= render inline: spo.product_order.product.valid_img(class: "avatar") %></td>
           <td><%= spo.copy_product.name %></td>
           <td><%= spo.product_order.product.price %></td>
           <td><%= spo.product_order.quantity %></td>

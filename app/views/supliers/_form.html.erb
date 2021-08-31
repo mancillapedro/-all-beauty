@@ -4,7 +4,7 @@
   <%= f.input :phone_number %>
   <%= f.input :email %>
 
-  <%= f.input :url_img %>
+  <%= f.input :image, as: :file, input_html: { accept: "image/*"} %>
 
   <%= f.button :submit %>
 <% end %>

@@ -15,7 +15,7 @@
         <% sub_total = product_order.quantity * product_order.product.price %>
         <% total += sub_total %>
         <tr>
-          <td><%= image_tag product_order.product.url_img, class: "avatar" %></td>
+          <td><%= render inline: product_order.product.valid_img(class: "avatar") %></td>
           <td><%= product_order.product.name %></td>
           <td><%= product_order.product.price %></td>
           <td><%= product_order.quantity %></td>
@@ -28,8 +28,6 @@
         <td></td>
         <td></td>
         <th scope="row"><%= total %></th>
-        <td></td>
-        <td></td>
       </tr>
     </tbody>
   </table>

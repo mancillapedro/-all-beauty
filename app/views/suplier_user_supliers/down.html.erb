@@ -1,0 +1,39 @@
+<%= render "jumbotron"  %>
+
+<div class="container mb-5">
+  <table class="table table-hover">
+    <h2>PEDIDOS DEL PROVEEDOR</h2>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ID producto (original)</th>
+        <th scope="col">Img (copia)</th>
+        <th scope="col">Nombre (copia)</th>
+        <th scope="col">Valor Unidad (copia)</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Total</th>
+        <th scope="col">#Status</th>
+        <th scope="col">Actualizar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @down.each do |spo| %>
+        <tr>
+          <td><%= spo.product_order.id %></td>
+          <td><%= spo.product_order.product.id %></td>
+          <td><%= render inline: spo.product_order.product.valid_img(class: "avatar") %></td>
+          <td><%= spo.copy_product.name %></td>
+          <td><%= spo.product_order.product.price %></td>
+          <td><%= spo.product_order.quantity %></td>
+          <td><%= spo.total %></td>
+          <td><%= spo.status %></td>
+          <td><%= link_to "#update", spo, action: :update, data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end  %>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-around my-5">
+    <%= link_to "back", dashboard2_path, class:"btn btn-primary" %>
+  </div>
+</div>

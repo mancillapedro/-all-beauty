@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   resources :categories, :only => [:show]
   resources :supliers, :only => [:show, :new, :create, :edit, :update]
 
-  get 'suplier_user_supliers/index'
+  get 'dashboard2', to:'suplier_user_supliers#index'
+  resources :suplier_user_supliers, :only => [:show]
+  get 'down', to:'suplier_user_supliers#down'
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

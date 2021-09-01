@@ -7,9 +7,9 @@ class SuplierProductOrdersController < ApplicationController
     @suplier_product_order = SuplierProductOrder.find(params[:id])
     @suplier_product_order.status = "True"
     if @suplier_product_order.save
-      redirect_to dashboard_path
+      redirect_to down_path
     else
-      render "suplier_user_supliers/show"
+      render "suplier_user_supliers/down"
     end
   end
 end

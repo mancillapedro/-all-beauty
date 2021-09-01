@@ -13,7 +13,6 @@
         <th scope="col">Cantidad</th>
         <th scope="col">Total</th>
         <th scope="col">#Status</th>
-        <th scope="col">Actualizar</th>
       </tr>
     </thead>
     <tbody>
@@ -27,11 +26,6 @@
           <td><%= spo.product_order.quantity %></td>
           <td><%= spo.total %></td>
           <td><%= spo.status %></td>
-          <td>
-            <%= simple_form_for(spo) do |f| %>
-              <%= f.button :submit, "#Update", class: "btn btn-primary" %>
-            <% end %>
-          </td>
         </tr>
       <% end  %>
     </tbody>

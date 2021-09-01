@@ -1,7 +1,7 @@
 class SuplierUserSupliersController < ApplicationController
-  before_action :authenticate_user_suplier!, only: [:index, :show, :down]
+  before_action :authenticate_user_suplier!, only: [:index, :show, :down, :up]
 
-  skip_before_action :authenticate_user!, only: [:index, :show, :down]
+  skip_before_action :authenticate_user!, only: [:index, :show, :down, :up]
 
   def index
     @suplier = current_user_suplier.suplier
@@ -14,6 +14,11 @@ class SuplierUserSupliersController < ApplicationController
 
   def down
     @suplier = current_user_suplier.suplier
-    @down = SuplierProductOrder.where(suplier: @suplier, status: 'pagado')
+    @suplier_product_orders = SuplierProductOrder.where(suplier: @suplier, status: 'pagado')
+  end
+
+  def up
+    @suplier = current_user_suplier.suplier
+    @suplier_product_orders = SuplierProductOrder.where(suplier: @suplier, status: 'True')
   end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'search', to:"products#search"
   get 'autocomplete', to:"products#autocomplete"
   get 'about', to:"pages#about"
-  get 'dashboard', to:"pages#dashboard"
+  # get 'dashboard', to:"pages#dashboard"
 
   resources :products, :only => [:index, :show, :new, :create, :update, :edit, :destroy] do
     resources :product_orders, :only => [:create]
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :categories, :only => [:show]
   resources :supliers, :only => [:show, :new, :create, :edit, :update]
 
-  get 'dashboard2', to:'suplier_user_supliers#index'
+  get 'dashboard', to:'suplier_user_supliers#index'
   resources :suplier_user_supliers, :only => [:show]
   get 'down', to:'suplier_user_supliers#down'
   get 'up', to:'suplier_user_supliers#up'

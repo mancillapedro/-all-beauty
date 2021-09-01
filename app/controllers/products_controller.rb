@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     if @product.destroy
       redirect_to dashboard_path
     else
-      render 'pages/dashboard'
+      render 'suplier_user_supliers/index'
     end
   end
   ######

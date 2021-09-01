@@ -34,6 +34,6 @@ class OrdersController < ApplicationController
   def new_suplier_product_order(product_order)
     copy_product = new_copy_product(product_order.product)
     total = product_order.product.price * product_order.quantity
-    SuplierProductOrder.create(suplier: product_order.product.suplier, product_order: product_order, copy_product: copy_product, status: 'pagado', total: total)
+    SuplierProductOrder.create(suplier: product_order.product.suplier, product_order: product_order, copy_product: copy_product, status: 'False', total: total)
   end
 end

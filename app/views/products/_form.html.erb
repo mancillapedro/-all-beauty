@@ -1,10 +1,21 @@
-<%= simple_form_for @product do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :stock %>
-  <%= f.input :price %>
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-4">
+      <h2>Ingresar producto</h2>
 
-  <%= f.input :image, as: :file, input_html: { accept: "image/*"} %>
-  <%= f.association :category %>
-  <%= f.button :submit %>
-<% end %>
+              <%= simple_form_for @product do |f| %>
+        <%= f.input :name, label: "Nombre" %>
+        <%= f.input :description, label: "Descripción" %>
+        <%= f.input :stock, label:"Stock" %>
+        <%= f.input :price, label:"Precio" %>
+
+        <%= f.input :image, label:"Imagen del producto" ,as: :file, input_html: { accept: "image/*"} %>
+        <%= f.association :category %>
+            <div class="form-actions btn btn-outline-info btn-sm">
+              <%= f.button :submit, "Ingresar producto" %>
+            </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

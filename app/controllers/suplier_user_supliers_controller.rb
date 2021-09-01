@@ -14,7 +14,7 @@ class SuplierUserSupliersController < ApplicationController
 
   def down
     @suplier = current_user_suplier.suplier
-    @suplier_product_orders = SuplierProductOrder.where(suplier: @suplier, status: 'pagado')
+    @suplier_product_orders = SuplierProductOrder.where(suplier: @suplier, status: 'False')
   end
 
   def up

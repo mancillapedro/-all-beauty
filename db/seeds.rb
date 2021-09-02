@@ -11,10 +11,16 @@ require 'json'
 
 supliers = JSON.parse(File.read('db/json_seed/supliers.json'))
 
-supliers.each do |suplier|
-    new_suplier = Suplier.new(suplier)
-    new_suplier.save!
-    puts "suplier #{new_suplier.name} creado"
+supliers.each do |suplier_attr|
+    suplier = Suplier.new(suplier_attr)
+    if suplier.save!
+      puts "suplier #{suplier.name} creado"
+      user_suplier = UserSuplier.new(email: suplier.email, password: '123qaz')
+      if user_suplier.save!
+        SuplierUserSuplier.create(suplier: suplier, user_suplier: user_suplier)
+        puts "user_suplier #{user_suplier.email} creado"
+      end
+    end
 end
 
 supliers = Suplier.all

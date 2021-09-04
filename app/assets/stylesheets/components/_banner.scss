@@ -22,6 +22,27 @@
       height: 150px;
       width: 150px;
     }
+    &{
+      height: 55vh;
+    }
+  }
+
+  @media(min-width: 576px) {
+    &{
+      height: 70vh;
+    }
+  }
+
+  @media(min-width: 768px) {
+    &{
+      height: 85vh;
+    }
+  }
+
+  @media(min-width: 992px) {
+    &{
+      height: 100vh;
+    }
   }
 
 }
@@ -33,4 +54,9 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
 }
+
+
+
+
+
 

@@ -33,7 +33,27 @@
               <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
               <!-- inicio modal -->
               <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <%= render "product_orders/form", product_order: [product_order.order, product_order] %>
+
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <%= simple_form_for [product_order.order, product_order] do |f| %>
+                      <div class="modal-body">
+                        <% stock = product_order.product.nil? ? @product.stock : product_order.product.stock %>
+                        <%= f.input_field :quantity, collection: 1..stock, class: "mx-3"%>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <%= f.button :submit, "Confirmar cantidad", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
               </div>
               <!-- fin modal -->
             </td>
@@ -61,7 +81,7 @@
     <%= link_to 'Comprar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modal", class:"btn btn-success mr-2" %>
     <% end %>
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-      <%= render "form" %>
+      <%= render "orders/form" %>
     </div>
   </div>
 

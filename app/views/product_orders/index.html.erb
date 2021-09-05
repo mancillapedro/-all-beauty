@@ -7,8 +7,8 @@
         <th scope="col">Img</th>
         <th scope="col">Nombre</th>
         <th scope="col">Precio</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Total</th>
+        <th class="text-center" scope="col">Cantidad</th>
+        <th class="text-right" scope="col">Total</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +18,9 @@
         <tr>
           <td><%= render inline: product_order.product.valid_img(class: "avatar") %></td>
           <td><%= product_order.product.name %></td>
-          <td><%= product_order.product.price %></td>
-          <td><%= product_order.quantity %></td>
-          <td><%= sub_total %></th>
+          <td><%= product_order.product.price_format %></td>
+          <td class="text-center"><%= product_order.quantity %></td>
+          <td class="text-right"><%= number_to_currency(sub_total, unit: "$", delimiter: ".", precision: 0) %></th>
         </tr>
       <% end %>
       <tr>
@@ -28,7 +28,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <th scope="row"><%= total %></th>
+        <th class="text-right" scope="row"><%= number_to_currency(total, unit: "$", delimiter: ".", precision: 0) %></th>
       </tr>
     </tbody>
   </table>

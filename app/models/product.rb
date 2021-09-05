@@ -9,4 +9,8 @@ class Product < ApplicationRecord
 
     return "<%= image_tag '#{url_img}', #{attr} %>"
   end
+
+  def price_format
+    ActionController::Base.helpers.number_to_currency(price, unit: "$", delimiter: ".", precision: 0)
+  end
 end

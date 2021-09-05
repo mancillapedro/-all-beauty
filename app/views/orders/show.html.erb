@@ -9,8 +9,8 @@
         <th scope="col">Img</th>
         <th scope="col">Nombre</th>
         <th scope="col">Precio</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Total</th>
+        <th class="text-center" scope="col">Cantidad</th>
+        <th class="text-right" scope="col">Total</th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
@@ -26,9 +26,9 @@
             <% end %>
           </td>
           <td><%= link_to product_order.product.name, product_order.product %></td>
-          <td><%= product_order.product.price%></td>
-          <td><%= product_order.quantity %></td>
-          <td><%= sub_total %></td>
+          <td><%= product_order.product.price_format %></td>
+          <td class="text-center" ><%= product_order.quantity %></td>
+          <td class="text-right" ><%= number_to_currency(sub_total, unit: "$", delimiter: ".", precision: 0) %></td>
           <td>
             <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
             <!-- inicio modal -->
@@ -45,7 +45,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <th scope="row"><%= total %></th>
+        <th class="text-right" scope="row"><%= number_to_currency(total, unit: "$", delimiter: ".", precision: 0) %></th>
         <td></td>
         <td></td>
       </tr>

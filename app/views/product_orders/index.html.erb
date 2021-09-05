@@ -1,37 +1,40 @@
-<% total = 0 %>
-<div class="container m-5">
-<br>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Img</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Precio</th>
-        <th class="text-center" scope="col">Cantidad</th>
-        <th class="text-right" scope="col">Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @product_orders.each_with_index do |product_order| %>
-        <% sub_total = product_order.quantity * product_order.product.price %>
-        <% total += sub_total %>
+<div class="container my-5 py-5">
+  <div class="table-responsive mt-3">
+    <table class="table table-hover">
+      <thead>
         <tr>
-          <td><%= render inline: product_order.product.valid_img(class: "avatar") %></td>
-          <td><%= product_order.product.name %></td>
-          <td><%= product_order.product.price_format %></td>
-          <td class="text-center"><%= product_order.quantity %></td>
-          <td class="text-right"><%= number_to_currency(sub_total, unit: "$", delimiter: ".", precision: 0) %></th>
+          <th scope="col">Img</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th class="text-center" scope="col">Cantidad</th>
+          <th class="text-right" scope="col">Total</th>
         </tr>
-      <% end %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <th class="text-right" scope="row"><%= number_to_currency(total, unit: "$", delimiter: ".", precision: 0) %></th>
-      </tr>
-    </tbody>
-  </table>
-  <%= link_to "Ver ordenes", orders_path, class:"btn btn-primary" %>
+      </thead>
+      <tbody>
+        <% total = 0 %>
+        <% @product_orders.each_with_index do |product_order| %>
+          <% sub_total = product_order.quantity * product_order.product.price %>
+          <% total += sub_total %>
+          <tr>
+            <td><%= render inline: product_order.product.valid_img(class: "avatar") %></td>
+            <td><%= product_order.product.name %></td>
+            <td><%= product_order.product.price_format %></td>
+            <td class="text-center"><%= product_order.quantity %></td>
+            <td class="text-right"><%= number_to_currency(sub_total, unit: "$", delimiter: ".", precision: 0) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th class="text-right" scope="row"><%= number_to_currency(total, unit: "$", delimiter: ".", precision: 0) %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-around mt-3">
+    <%= link_to "Ver ordenes", orders_path, class:"btn btn-primary" %>
+  </div>
 </div>
 

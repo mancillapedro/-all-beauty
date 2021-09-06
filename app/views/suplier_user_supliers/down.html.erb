@@ -13,8 +13,8 @@
           <th scope="col">Valor Unidad (copia)</th>
           <th scope="col">Cantidad</th>
           <th scope="col">Total</th>
-          <th scope="col">#Status</th>
-          <th scope="col">Actualizar</th>
+          <th scope="col">Estado Orden</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -25,9 +25,9 @@
             <td><%= render inline: spo.product_order.product.valid_img(class: "avatar") %></td>
             <td><%= spo.copy_product.name %></td>
             <td><%= spo.product_order.product.price_format %></td>
-            <td><%= spo.product_order.quantity %></td>
+            <td class="text-center" ><%= spo.product_order.quantity %></td>
             <td><%= number_to_currency(spo.total, unit: "$", delimiter: ".", precision: 0) %></td>
-            <td><%= spo.status %></td>
+            <td><%= spo.status_text %></td>
             <td>
               <%= simple_form_for(spo) do |f| %>
                 <%= f.button :submit, "#Update", class: "btn btn-primary" %>

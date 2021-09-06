@@ -1,4 +1,4 @@
-<div class="container m-5 pt-5">  
+<div class="container my-5 py-5 ">
   <h1  class="text-center my-5">DETALLES DE MIS COMPRAS</h1>
   <table class="table table-hover mb-5">
     <h3>MI COMPRA ACTUAL</h3>
@@ -13,7 +13,7 @@
     <tbody>
       <tr>
         <td><%= @order_carro.id %></td>
-        <td><%= @order_carro.product_orders.sum { |p_o| p_o.quantity * p_o.product.price} %></td>
+        <td><%= number_to_currency(@order_carro.product_orders.sum { |p_o| p_o.quantity * p_o.product.price}, unit: "$", delimiter: ".", precision: 0) %></td>
         <td><%= "En carro" unless @order_carro.status %></td>
         <td><%= link_to "Ver más", order_path(@order_carro) %></td>
       </tr>
@@ -34,7 +34,7 @@
       <% @orders_listas.where(status: true).each_with_index do |order| %>
         <tr>
           <td><%= order.id %></td>
-          <td><%= order.total %></td>
+          <td><%= number_to_currency(order.total, unit: "$", delimiter: ".", precision: 0) %></td>
           <td><%= "Lista" if order.status %></td>
           <td><%= link_to "Ver más", order_product_orders_path(order) %></td>
         </tr>

@@ -1,57 +1,79 @@
-<div class="container m-5 pt-5">
+<div class="container my-5 py-5">
   <h1>MI PEDIDO</h1>
-</div>
+
 <% total = 0 %>
-<div class="container mt-5">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Img</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Total</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @order.product_orders.each_with_index do |product_order| %>
-        <% sub_total = product_order.quantity * product_order.product.price %>
-        <% total += sub_total %>
+  <div class="table-responsive mt-5">
+    <table class="table table-hover">
+      <thead>
         <tr>
-          <td>
-            <%= link_to product_order.product do %>
-              <%= render inline: product_order.product.valid_img(class: "avatar") %>
-            <% end %>
-          </td>
-          <td><%= link_to product_order.product.name, product_order.product %></td>
-          <td><%= product_order.product.price%></td>
-          <td><%= product_order.quantity %></td>
-          <td><%= sub_total %></td>
-          <td>
-            <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
-            <!-- inicio modal -->
-            <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <%= render "product_orders/form", product_order: [product_order.order, product_order] %>
-            </div>
-            <!-- fin modal -->
-          </td>
-          <td><%= link_to 'Borrar', product_order_path(product_order), method: :delete, data: { confirm: "¿Estás seguro?" } %></td>
+          <th scope="col">Img</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th class="text-center" scope="col">Cantidad</th>
+          <th class="text-right" scope="col">Total</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
-      <% end %>
-      <tr>
-        <td></th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <th scope="row"><%= total %></th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-around">
+      </thead>
+      <tbody>
+        <% @order.product_orders.each_with_index do |product_order| %>
+          <% sub_total = product_order.quantity * product_order.product.price %>
+          <% total += sub_total %>
+          <tr>
+            <td>
+              <%= link_to product_order.product do %>
+                <%= render inline: product_order.product.valid_img(class: "avatar") %>
+              <% end %>
+            </td>
+            <td><%= link_to product_order.product.name, product_order.product %></td>
+            <td><%= product_order.product.price_format %></td>
+            <td class="text-center" ><%= product_order.quantity %></td>
+            <td class="text-right" ><%= number_to_currency(sub_total, unit: "$", delimiter: ".", precision: 0) %></td>
+            <td>
+              <%= link_to 'Editar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modalProductOrder#{product_order.id}" %>
+              <!-- inicio modal -->
+              <div class="modal fade" id="modalProductOrder<%= product_order.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <%= simple_form_for [product_order.order, product_order] do |f| %>
+                      <div class="modal-body">
+                        <% stock = product_order.product.nil? ? @product.stock : product_order.product.stock %>
+                        <%= f.input_field :quantity, collection: 1..stock, class: "mx-3"%>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <%= f.button :submit, "Confirmar cantidad", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <!-- fin modal -->
+            </td>
+            <td><%= link_to 'Borrar', product_order_path(product_order), method: :delete, data: { confirm: "¿Estás seguro?" } %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th class="text-right" scope="row"><%= number_to_currency(total, unit: "$", delimiter: ".", precision: 0) %></th>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-around mt-3">
     <%= link_to "Ver ordenes", orders_path, class:"btn btn-primary" %>
     <% if  total == 0 %>
     <%= link_to 'Comprar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modal", class:"btn btn-success mr-2 disabled" %>
@@ -59,7 +81,8 @@
     <%= link_to 'Comprar', '#', type: "button", 'data-toggle' => "modal", 'data-target' => "#modal", class:"btn btn-success mr-2" %>
     <% end %>
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-      <%= render "form" %>
+      <%= render "orders/form" %>
     </div>
   </div>
+
 </div>

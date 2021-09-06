@@ -1,20 +1,17 @@
 <div class="container">
   <div class="row align-items-center justify-content-center">
     <div class="col-md-4">
-      <h2>Nuevo proveedor</h2>
-
-        <%= simple_form_for @suplier do |f| %>
-          <%= f.input :name, label:"Nombre" %>
-          <%= f.input :address, label:"Dirección" %>
-          <%= f.input :phone_number, label:"Teléfono" %>
-          <%= f.input :email, label:"Correo electrónico" %>
-
-          <%= f.input :image, label: "Imagen",  as: :file, input_html: { accept: "image/*"} %>
-
-          <div class="form-actions btn btn-outline-info btn-sm">
-            <%= f.button :submit, "Ingresar proveedor" %>
-          </div>
-        <% end %>
+      <h2>Editar proveedor</h2>
+      <%= simple_form_for @suplier do |f| %>
+        <%= f.input :name, label:"Nombre" %>
+        <%= f.input :address, label:"Dirección" %>
+        <%= f.input :phone_number, label:"Teléfono" %>
+        <%= f.input :email, label:"Correo electrónico" %>
+        <%= f.input :image, label: "Imagen",  as: :file, input_html: { accept: "image/*"} %>
+        <div class="form-actions btn btn-outline-info btn-sm">
+          <%= f.button :submit, "Ingresar proveedor" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
